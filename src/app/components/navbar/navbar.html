@@ -20,7 +20,7 @@
       } @else {
         <!-- Opciones solo para usuario normal -->
         <li>
-          <button (click)="irAgendar()" class="text-gray-600 hover:text-teal-600">
+          <button (click)="irAgendar()" class="text-gray-600 hover:text-teal-600 cursor-pointer">
             Agendar
           </button>
         </li>
@@ -32,7 +32,7 @@
       </li>
 
       <li>
-        <button (click)="authService.logout()" class="text-red-500 hover:text-red-700">
+        <button (click)="authService.logout()" class="text-red-500 hover:text-red-700 cursor-pointer">
           Cerrar sesión
         </button>
       </li>
@@ -40,7 +40,7 @@
     } @else {
       <!-- Sin sesión -->
       <li>
-        <button (click)="irAgendar()" class="text-gray-600 hover:text-teal-600">
+        <button (click)="irAgendar()" class="text-gray-600 hover:text-teal-600 cursor-pointer">
           Agendar
         </button>
       </li>
