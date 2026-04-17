@@ -17,6 +17,7 @@ export const routes: Routes = [
     { path: 'agendar', loadComponent: () => import('./pages/agendar/agendar').then(m => m.Agendar), canActivate: [authGuard] },
     { path: 'confirmacion', loadComponent: () => import('./pages/confirmacion/confirmacion').then(m => m.Confirmacion), canActivate: [authGuard] },
     { path: 'mis-citas', loadComponent: () => import('./pages/mis-citas/mis-citas').then(m => m.MisCitas), canActivate: [authGuard] },
+    { path: 'perfil', loadComponent: () => import('./pages/perfil/perfil').then(m => m.Perfil), canActivate: [authGuard] },
 
     // Rutas protegidas - admin
     { path: 'admin/calendario', loadComponent: () => import('./pages/admin/admin-calendario/admin-calendario').then(m => m.AdminCalendario), canActivate: [authGuard, adminGuard] },

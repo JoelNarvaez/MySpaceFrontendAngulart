@@ -31,8 +31,16 @@ export class Auth {
     return this.http.post<unknown>(`${this.apiUrl}/auth/registro`, datos).pipe(
       map(response => this.normalizarUsuario(response)),
       tap(usuario => {
-        this.usuarioActual.set(usuario);
-        localStorage.setItem('usuario', JSON.stringify(usuario));
+        this.persistirUsuario(usuario);
+      })
+    );
+  }
+
+  actualizarPerfil(datos: { nombre: string; email: string; telefono: string }): Observable<Usuario> {
+    return this.http.put<unknown>(`${this.apiUrl}/auth/perfil`, datos).pipe(
+      map(response => this.normalizarUsuario(response, this.usuarioActual())),
+      tap(usuario => {
+        this.persistirUsuario(usuario);
       })
     );
   }
@@ -49,7 +57,12 @@ export class Auth {
     }
   }
 
-  private normalizarUsuario(response: unknown): Usuario {
+  private persistirUsuario(usuario: Usuario) {
+    this.usuarioActual.set(usuario);
+    localStorage.setItem('usuario', JSON.stringify(usuario));
+  }
+
+  private normalizarUsuario(response: unknown, fallback: Usuario | null = null): Usuario {
     const raw = (response ?? {}) as Record<string, unknown>;
     const nested = this.esObjeto(raw['usuario']) ? raw['usuario'] : this.esObjeto(raw['user']) ? raw['user'] : raw;
 
@@ -58,17 +71,18 @@ export class Auth {
       this.texto(nested['name']) ??
       this.texto(raw['nombre']) ??
       this.texto(raw['name']) ??
+      fallback?.nombre ??
       this.texto(nested['email']) ??
       this.texto(raw['email']) ??
       'Usuario';
 
     return {
-      id: this.numero(nested['id']) ?? this.numero(raw['id']) ?? 0,
+      id: this.numero(nested['id']) ?? this.numero(raw['id']) ?? fallback?.id ?? 0,
       nombre,
-      email: this.texto(nested['email']) ?? this.texto(raw['email']) ?? '',
-      telefono: this.texto(nested['telefono']) ?? this.texto(raw['telefono']),
-      rol: (this.texto(nested['rol']) ?? this.texto(raw['rol']) ?? 'usuario') as 'usuario' | 'admin',
-      token: this.texto(raw['token']) ?? this.texto(nested['token']) ?? '',
+      email: this.texto(nested['email']) ?? this.texto(raw['email']) ?? fallback?.email ?? '',
+      telefono: this.texto(nested['telefono']) ?? this.texto(raw['telefono']) ?? fallback?.telefono,
+      rol: (this.texto(nested['rol']) ?? this.texto(raw['rol']) ?? fallback?.rol ?? 'usuario') as 'usuario' | 'admin',
+      token: this.texto(raw['token']) ?? this.texto(nested['token']) ?? fallback?.token ?? '',
     };
   }
 

@@ -1,8 +1,9 @@
+<!-- HERO -->
 <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
   <div class="absolute inset-0 z-0">
     @for (img of imagenes; track $index) {
-      <img [src]="img" 
-           alt="My Space" 
+      <img [src]="img"
+           alt="My Space"
            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
            [class.opacity-100]="$index === indiceImagenActual"
            [class.opacity-0]="$index !== indiceImagenActual">
@@ -17,8 +18,8 @@
         <span class="text-xs uppercase tracking-[0.4em] mt-2 font-bold text-[#D8E0F2]">Massage Therapy</span>
       </div>
       <p class="text-lg md:text-xl font-light mb-10 italic">"Donde el tiempo se detiene y el alma descansa"</p>
-      
-      <a routerLink="/agendar" 
+
+      <a routerLink="/agendar"
          class="inline-block bg-[#D4A373] hover:bg-[#1E3A5F] text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-[0.3em] transition-all duration-500 shadow-lg hover:shadow-[#D4A373]/40 hover:-translate-y-1 active:scale-95">
         ¡Agenda tu cita!
       </a>
@@ -26,9 +27,13 @@
   </div>
 </section>
 
+<!-- BENEFICIOS -->
+<app-beneficios></app-beneficios>
+
+<!-- SERVICIOS + HORARIOS -->
 <section class="py-24 px-6 bg-[#F5F5F4]">
   <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
-    
+
     <div class="lg:col-span-7">
       <div class="mb-10">
         <h2 class="logo-font text-3xl text-[#1E3A5F] uppercase tracking-widest flex items-center gap-4">
@@ -36,7 +41,7 @@
         </h2>
         <div class="h-[1px] w-20 bg-[#D4A373] mt-2"></div>
       </div>
-      
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         @for (servicio of serviciosAleatorios(); track servicio.id) {
           <app-tarjeta-servicio
@@ -51,7 +56,7 @@
 
       <div class="mt-12">
         <a routerLink="/servicios" class="group inline-flex items-center gap-3 text-[#1E3A5F] font-bold text-xs uppercase tracking-[0.2em] hover:text-[#D4A373] transition-colors">
-          Explorar todos los servicios 
+          Explorar todos los servicios
           <span class="group-hover:translate-x-2 transition-transform duration-300">→</span>
         </a>
       </div>
@@ -60,11 +65,11 @@
     <div class="lg:col-span-5">
       <div class="bg-[#1E3A5F] text-white p-10 md:p-14 rounded-3xl shadow-2xl relative overflow-hidden border border-white/5">
         <div class="absolute -right-16 -top-16 w-48 h-48 bg-white/5 rounded-full"></div>
-        
+
         <h3 class="logo-font text-2xl mb-12 tracking-widest uppercase border-b border-white/10 pb-4">
           Horarios <span class="text-[#D4A373]">.</span>
         </h3>
-        
+
         <div class="space-y-10">
           <div class="flex justify-between items-end border-b border-white/5 pb-2">
             <div>
@@ -101,16 +106,20 @@
   </div>
 </section>
 
+<!-- SOBRE NOSOTROS -->
+<app-sobre-nosotros></app-sobre-nosotros>
+
+<!-- TESTIMONIOS -->
+<app-testimonios></app-testimonios>
+
 <!-- FAQ -->
 <section class="bg-[#F5F5F4] pb-28 px-6">
   <div class="max-w-7xl mx-auto">
 
-    <!-- CONTENEDOR SUTIL (NO CARD PESADO) -->
-    <div class="px-10 md:px-14 py-12 rounded-3xl 
+    <div class="px-10 md:px-14 py-12 rounded-3xl
                 bg-gradient-to-b from-white/20 via-white/10 to-transparent
                 backdrop-blur-sm border border-[#E8E5E0]/60">
 
-      <!-- HEADER -->
       <div class="mb-10">
         <h2 class="logo-font text-3xl md:text-4xl text-[#1E3A5F] uppercase tracking-widest flex items-center gap-4">
           Preguntas Frecuentes <span class="text-[#D4A373]">.</span>
@@ -118,24 +127,16 @@
         <div class="h-[1px] w-24 bg-[#D4A373]/70 mt-3"></div>
       </div>
 
-      <!-- LISTA -->
       <div class="space-y-6">
 
-        <!-- ITEM -->
         <div class="border-b border-[#E5E2DC] pb-4">
-          <button (click)="toggleFAQ(0)"
-            class="w-full flex justify-between items-center text-left group">
-
+          <button (click)="toggleFAQ(0)" class="w-full flex justify-between items-center text-left group">
             <span class="text-[#1E3A5F] text-lg tracking-wide transition group-hover:text-[#D4A373]">
               ¿Necesito reservar con anticipación?
             </span>
-
             <span class="text-[#D4A373] text-lg transition-transform duration-300 group-hover:scale-110"
-                  [class.rotate-45]="faqAbierto === 0">
-              +
-            </span>
+                  [class.rotate-45]="faqAbierto === 0">+</span>
           </button>
-
           @if (faqAbierto === 0) {
             <div class="text-gray-600 text-sm mt-2 leading-relaxed max-w-3xl">
               Recomendamos reservar con anticipación para asegurar disponibilidad,
@@ -144,21 +145,14 @@
           }
         </div>
 
-        <!-- ITEM -->
         <div class="border-b border-[#E5E2DC] pb-4">
-          <button (click)="toggleFAQ(1)"
-            class="w-full flex justify-between items-center text-left group">
-
+          <button (click)="toggleFAQ(1)" class="w-full flex justify-between items-center text-left group">
             <span class="text-[#1E3A5F] text-lg tracking-wide transition group-hover:text-[#D4A373]">
               ¿Qué debo llevar a mi cita?
             </span>
-
             <span class="text-[#D4A373] text-lg transition-transform duration-300 group-hover:scale-110"
-                  [class.rotate-45]="faqAbierto === 1">
-              +
-            </span>
+                  [class.rotate-45]="faqAbierto === 1">+</span>
           </button>
-
           @if (faqAbierto === 1) {
             <div class="text-gray-600 text-sm mt-2 leading-relaxed max-w-3xl">
               Solo necesitas venir cómodo. Nosotros te proporcionamos todo lo necesario
@@ -167,21 +161,14 @@
           }
         </div>
 
-        <!-- ITEM -->
         <div class="border-b border-[#E5E2DC] pb-4">
-          <button (click)="toggleFAQ(2)"
-            class="w-full flex justify-between items-center text-left group">
-
+          <button (click)="toggleFAQ(2)" class="w-full flex justify-between items-center text-left group">
             <span class="text-[#1E3A5F] text-lg tracking-wide transition group-hover:text-[#D4A373]">
               ¿Puedo cancelar o reprogramar?
             </span>
-
             <span class="text-[#D4A373] text-lg transition-transform duration-300 group-hover:scale-110"
-                  [class.rotate-45]="faqAbierto === 2">
-              +
-            </span>
+                  [class.rotate-45]="faqAbierto === 2">+</span>
           </button>
-
           @if (faqAbierto === 2) {
             <div class="text-gray-600 text-sm mt-2 leading-relaxed max-w-3xl">
               Sí, puedes hacerlo con al menos 24 horas de anticipación sin costo adicional.
@@ -189,21 +176,14 @@
           }
         </div>
 
-        <!-- ITEM -->
         <div class="border-b border-[#E5E2DC] pb-4">
-          <button (click)="toggleFAQ(3)"
-            class="w-full flex justify-between items-center text-left group">
-
+          <button (click)="toggleFAQ(3)" class="w-full flex justify-between items-center text-left group">
             <span class="text-[#1E3A5F] text-lg tracking-wide transition group-hover:text-[#D4A373]">
               ¿Cuánto dura una sesión?
             </span>
-
             <span class="text-[#D4A373] text-lg transition-transform duration-300 group-hover:scale-110"
-                  [class.rotate-45]="faqAbierto === 3">
-              +
-            </span>
+                  [class.rotate-45]="faqAbierto === 3">+</span>
           </button>
-
           @if (faqAbierto === 3) {
             <div class="text-gray-600 text-sm mt-2 leading-relaxed max-w-3xl">
               Dependiendo del servicio, las sesiones suelen durar entre 60 y 90 minutos.
@@ -211,21 +191,14 @@
           }
         </div>
 
-        <!-- ITEM -->
         <div>
-          <button (click)="toggleFAQ(4)"
-            class="w-full flex justify-between items-center text-left group">
-
+          <button (click)="toggleFAQ(4)" class="w-full flex justify-between items-center text-left group">
             <span class="text-[#1E3A5F] text-lg tracking-wide transition group-hover:text-[#D4A373]">
               ¿Aceptan pagos con tarjeta?
             </span>
-
             <span class="text-[#D4A373] text-lg transition-transform duration-300 group-hover:scale-110"
-                  [class.rotate-45]="faqAbierto === 4">
-              +
-            </span>
+                  [class.rotate-45]="faqAbierto === 4">+</span>
           </button>
-
           @if (faqAbierto === 4) {
             <div class="text-gray-600 text-sm mt-2 leading-relaxed max-w-3xl">
               Sí, aceptamos efectivo, tarjetas y transferencias.
@@ -234,7 +207,6 @@
         </div>
 
       </div>
-
     </div>
 
   </div>

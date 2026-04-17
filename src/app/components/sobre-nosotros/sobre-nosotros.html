@@ -1,0 +1,34 @@
+<section class="py-24 px-6 bg-[#F9F9F9]">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+    <div appReveal class="relative">
+      <img src="local1.jpeg" alt="My Space Spa interior" class="w-full h-[480px] object-cover rounded-2xl shadow-2xl">
+      <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-[#D4A373]/15 rounded-full blur-2xl pointer-events-none"></div>
+    </div>
+
+    <div appReveal [delay]="'150ms'">
+      <h2 class="logo-font text-3xl md:text-4xl text-[#1E3A5F] uppercase tracking-widest mb-4">
+        Sobre My Space<span class="text-[#D4A373]">.</span>
+      </h2>
+      <div class="h-[1px] w-16 bg-[#D4A373] mb-8"></div>
+
+      <p class="text-[#4A4A4A] leading-relaxed mb-6 font-light">
+        En My Space creemos que el bienestar es un derecho, no un lujo. Nuestro espacio nació con la misión de ofrecer un refugio de paz en medio del ritmo de la vida moderna, donde cada visita sea una pausa intencional para reconectar contigo mismo.
+      </p>
+      <p class="text-[#4A4A4A] leading-relaxed mb-10 font-light">
+        Trabajamos con técnicas probadas y productos de origen orgánico, en un ambiente diseñado para que tu mente y cuerpo descansen de verdad.
+      </p>
+
+      <p class="text-[#1E3A5F] font-bold italic logo-font text-lg">
+        — My Space Massage Therapy
+      </p>
+
+      <a routerLink="/nosotros"
+         class="inline-flex items-center gap-3 mt-10 text-[#1E3A5F] font-bold text-xs uppercase tracking-[0.2em] hover:text-[#D4A373] transition-colors group">
+        Conoce nuestra historia
+        <span class="group-hover:translate-x-2 transition-transform duration-300">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>

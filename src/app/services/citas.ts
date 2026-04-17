@@ -24,8 +24,10 @@ export class Citas {
     return this.http.get<Cita[]>(`${this.apiUrl}/citas/usuario/${email}`);
   }
 
-  cancelarCita(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/citas/${id}`);
+  cancelarCita(id: number, motivoCancelacion: string): Observable<any> {
+    return this.http.patch(`${this.apiUrl}/citas/${id}/cancelar`, {
+      motivo_cancelacion: motivoCancelacion
+    });
   }
 
   getCitasAdmin(): Observable<Cita[]> {

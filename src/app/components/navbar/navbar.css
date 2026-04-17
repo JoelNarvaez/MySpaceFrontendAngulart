@@ -1,27 +1,57 @@
-/* Referencia a Tailwind v4 */
 @reference "tailwindcss";
 
-/* Aplicamos la fuente base 'Nunito' solo a este componente */
 :host {
   display: block;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Fuente elegante para el Logo (tipo Lora) */
 .logo-font {
-  font-family: 'Lora', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
 }
 
-/* Links de navegación con efecto sutil */
+.navbar-shell {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.7);
+  background: rgba(245, 245, 244, 0.9);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04);
+}
+
+.navbar-inner {
+  @apply mx-auto flex max-w-7xl items-center gap-6 px-6;
+  min-height: 5.25rem;
+}
+
+.navbar-brand {
+  @apply flex shrink-0 items-center gap-3;
+}
+
+.navbar-desktop {
+  @apply hidden min-w-0 flex-1 items-center justify-between gap-8 md:flex;
+}
+
+.navbar-center {
+  @apply flex min-w-0 flex-1 justify-center;
+}
+
+.navbar-links {
+  @apply flex min-w-0 flex-wrap items-center justify-center gap-x-7 gap-y-2 list-none m-0 p-0;
+}
+
+.navbar-actions {
+  @apply flex shrink-0 items-center gap-3;
+}
+
 .nav-link {
-  @apply text-[#1F2937] text-sm font-medium tracking-wide relative pb-1
-         hover:text-[#1E3A5F] transition-all duration-300 ease-in-out;
+  @apply relative pb-1 text-sm font-medium tracking-wide text-[#1F2937] transition-all duration-300 ease-in-out hover:text-[#1E3A5F];
 }
 
-/* Línea decorativa dorada en hover */
 .nav-link::after {
   content: '';
-  @apply absolute left-0 bottom-0 h-[1.5px] w-0 bg-[#D4A373] transition-all duration-300;
+  @apply absolute left-0 bottom-0 h-[2px] w-0 bg-[#D4A373] transition-all duration-300;
 }
 
 .nav-link:hover::after,
@@ -30,22 +60,81 @@
 }
 
 .active-link {
-  @apply text-[#1E3A5F] font-bold;
+  @apply font-bold text-[#1E3A5F];
 }
 
-/* Botón Dorado (Inspirado en el botón del volante) */
 .btn-gold {
-  @apply bg-[#D4A373] text-white px-6 py-2.5 rounded-full text-[11px] font-bold uppercase tracking-[0.1em]
-         shadow-sm hover:bg-[#bc8b5a] hover:shadow-md hover:-translate-y-0.5 transition-all active:scale-95;
+  @apply rounded-full bg-[#D4A373] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white shadow-sm transition-all active:scale-95 hover:-translate-y-0.5 hover:bg-[#bc8b5a] hover:shadow-md;
 }
 
-/* Botón de login estilo minimalista */
 .btn-login {
-  @apply text-[#1E3A5F] border border-[#1E3A5F] px-5 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider
-         hover:bg-[#1E3A5F] hover:text-white transition-all;
+  @apply rounded-full border border-[#1E3A5F] px-5 py-2 text-[11px] font-bold uppercase tracking-wider text-[#1E3A5F] transition-all hover:bg-[#1E3A5F] hover:text-white;
 }
 
-/* Menú móvil */
+.user-chip {
+  @apply inline-flex items-center justify-center rounded-full border px-4 py-2;
+}
+
+.user-chip--profile {
+  @apply max-w-[10rem] truncate border-slate-200 bg-white/70 text-[11px] font-bold uppercase tracking-[0.08em] text-[#1F2937] transition-colors hover:border-[#1E3A5F]/20 hover:bg-[#1E3A5F]/8 hover:text-[#1E3A5F];
+}
+
+.user-chip--logout {
+  @apply border-red-100 bg-red-50 text-[10px] font-black uppercase text-red-500 transition-colors hover:border-red-200 hover:bg-red-100 hover:text-red-700;
+}
+
+.navbar-toggle {
+  @apply ml-auto inline-flex items-center justify-center rounded-full border border-slate-200 bg-white/70 p-2 text-[#1E3A5F] shadow-sm;
+}
+
+.mobile-panel {
+  @apply border-t border-white/60 bg-[#F5F5F4]/95 px-4 pb-4;
+}
+
+.mobile-panel__content {
+  @apply mx-auto max-w-7xl rounded-[1.6rem] bg-white/80 p-4 shadow-lg backdrop-blur;
+}
+
+.mobile-user {
+  @apply mb-4 block rounded-2xl bg-[#1E3A5F] px-4 py-3 text-white;
+}
+
+.mobile-user__label {
+  @apply text-[10px] uppercase tracking-[0.2em] text-white/60;
+}
+
+.mobile-user__name {
+  @apply mt-1 text-sm font-semibold;
+}
+
+.mobile-links {
+  @apply flex flex-col;
+}
+
 .mobile-link {
-  @apply block w-full text-left py-4 px-6 text-[#1F2937] font-medium border-b border-gray-50 hover:bg-white;
+  @apply block w-full border-b border-slate-100 px-2 py-4 text-left font-medium text-[#1F2937] transition-colors hover:text-[#1E3A5F];
+}
+
+.mobile-actions {
+  @apply mt-4 flex flex-col gap-3;
+}
+
+.mobile-btn {
+  @apply w-full text-center;
+}
+
+.mobile-logout {
+  @apply py-2 text-sm font-semibold text-red-500;
+}
+
+@media (max-width: 900px) {
+  .navbar-inner {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar-toggle {
+    display: none;
+  }
 }

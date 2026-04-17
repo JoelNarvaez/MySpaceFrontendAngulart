@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
 import { Auth } from './services/auth';
 import { Footer } from './components/footer/footer';
+import { WhatsappFlotante } from './components/whatsapp-flotante/whatsapp-flotante';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navbar, Footer],
+  imports: [RouterOutlet, Navbar, Footer, WhatsappFlotante],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
