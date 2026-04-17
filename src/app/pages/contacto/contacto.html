@@ -1,91 +1,124 @@
-<section class="min-h-screen bg-[#F5F5F4] py-24 px-8">
-  <div class="max-w-6xl mx-auto">
+<!-- HERO -->
+<section class="w-full bg-[#1E3A5F] pt-28 pb-24 px-6 text-center">
+  <h1 class="font-serif text-6xl tracking-[0.35em] text-white">
+    CONTACTO
+  </h1>
 
-    <div class="text-center mb-20">
-      <h1 class="font-serif text-6xl tracking-[0.35em] text-[#1E3A5F]">
-        CONTACTO
-      </h1>
-      <div class="w-20 h-[3px] bg-[#D4A373] mx-auto my-6"></div>
-      <p class="text-gray-500 text-xl tracking-wide mt-4">
-        Estamos para ayudarte
-      </p>
-    </div>
+  <div class="w-20 h-[3px] bg-[#D4A373] mx-auto my-6"></div>
+
+  <p class="text-gray-200 text-xl max-w-2xl mx-auto mt-4">
+    Estamos aquí para ayudarte a vivir una experiencia de bienestar única
+  </p>
+</section>
+
+<!-- CONTENIDO -->
+<section class="bg-[#F5F5F4] py-24 px-8">
+  <div class="max-w-6xl mx-auto">
 
     <div class="grid md:grid-cols-2 gap-20">
 
+      <!-- INFO -->
       <div>
-        <h2 class="font-serif text-4xl text-[#1E3A5F] mb-12">
+        <h2 class="font-serif text-4xl text-[#1E3A5F] mb-12 text-left">
           Encuéntranos
         </h2>
 
-        <div class="space-y-10">
+        <div class="grid sm:grid-cols-2 gap-8">
 
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 border-2 border-[#D4A373] rounded-full flex items-center justify-center">
-              <svg class="w-7 h-7 text-[#D4A373]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <!-- DIRECCIÓN -->
+          <div (click)="mostrarMapa = true"
+               class="group p-6 rounded-2xl border border-[#E5E7EB] bg-white/70 backdrop-blur-sm 
+                      transition hover:shadow-lg hover:-translate-y-1 text-center cursor-pointer">
+
+            <div class="w-16 h-16 mx-auto mb-4 border-2 border-[#D4A373] rounded-full flex items-center justify-center
+                        transition-all duration-300 group-hover:bg-[#D4A373] group-hover:scale-110">
+              <svg class="w-8 h-8 text-[#D4A373] transition group-hover:text-white"
+                   fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path d="M12 21s-6-5.33-6-10a6 6 0 1112 0c0 4.67-6 10-6 10z"/>
               </svg>
             </div>
-            <div>
-              <p class="text-[#1E3A5F] font-medium text-2xl">Dirección</p>
-              <p class="text-gray-500 text-xl leading-relaxed">
-                Av. Independencia 225A, Col. Industrial. Zona Centro, Ags
-              </p>
-            </div>
+
+            <p class="text-[#1E3A5F] font-medium text-xl mb-2">Dirección</p>
+
+            <p class="text-gray-500 text-lg leading-relaxed">
+              Av. Independencia 225A, Col. Industrial. Zona Centro, Ags
+            </p>
+
+            <p class="text-[#D4A373] text-sm mt-2">
+              Click aquí
+            </p>
+
           </div>
 
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 border-2 border-[#D4A373] rounded-full flex items-center justify-center">
-              <svg class="w-7 h-7 text-[#D4A373]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path d="M3 5a2 2 0 012-2h2l2 5-2 1a11 11 0 005 5l1-2 5 2v2a2 2 0 01-2 2h-1C8 20 4 16 4 9V8a2 2 0 01-1-3z"/>
-              </svg>
-            </div>
-            <div>
-              <p class="text-[#1E3A5F] font-medium text-2xl">Teléfono</p>
-              <p class="text-gray-500 text-xl leading-relaxed">
-                449 347 6829
-              </p>
-            </div>
-          </div>
+          <!-- HORARIOS -->
+          <div class="group p-6 rounded-2xl border border-[#E5E7EB] bg-white/70 backdrop-blur-sm 
+                      transition hover:shadow-lg hover:-translate-y-1 text-center">
 
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 border-2 border-[#D4A373] rounded-full flex items-center justify-center">
-              <svg class="w-7 h-7 text-[#D4A373]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                <path d="M16 8a6 6 0 01-12 0 6 6 0 0112 0z"/>
-                <path d="M2 20c2-4 14-4 16 0"/>
-              </svg>
-            </div>
-            <div>
-              <p class="text-[#1E3A5F] font-medium text-2xl">Redes Sociales</p>
-              <p class="text-gray-500 text-xl leading-relaxed">
-                @myspace_ags
-              </p>
-            </div>
-          </div>
-
-          <div class="flex items-start gap-6">
-            <div class="w-14 h-14 border-2 border-[#D4A373] rounded-full flex items-center justify-center">
-              <svg class="w-7 h-7 text-[#D4A373]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <div class="w-16 h-16 mx-auto mb-4 border-2 border-[#D4A373] rounded-full flex items-center justify-center
+                        transition-all duration-300 group-hover:bg-[#D4A373] group-hover:scale-110">
+              <svg class="w-8 h-8 text-[#D4A373] transition group-hover:text-white"
+                   fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="9"/>
                 <path d="M12 7v5l3 3"/>
               </svg>
             </div>
-            <div>
-              <p class="text-[#1E3A5F] font-medium text-2xl">Horarios</p>
-              <p class="text-gray-500 text-xl leading-relaxed">
-                Lunes a Viernes: 10:00am - 8:00pm
-              </p>
-              <p class="text-gray-500 text-xl leading-relaxed">
-                Sábados: 10:00am - 2:00pm
-              </p>
+
+            <p class="text-[#1E3A5F] font-medium text-xl mb-2">Horarios</p>
+
+            <p class="text-gray-500 text-lg">Lunes a Viernes:</p>
+            <p class="text-gray-500 text-lg">10:00am - 8:00pm</p>
+            <p class="text-gray-500 text-lg">Sábados: </p>
+            <p class="text-gray-500 text-lg">10:00am - 2:00pm</p>
+
+          </div>
+
+          <!-- TELÉFONO -->
+          <div class="group p-6 rounded-2xl border border-[#E5E7EB] bg-white/70 backdrop-blur-sm 
+                      transition hover:shadow-lg hover:-translate-y-1 text-center">
+
+            <div class="w-16 h-16 mx-auto mb-4 border-2 border-[#D4A373] rounded-full flex items-center justify-center
+                        transition-all duration-300 group-hover:bg-[#D4A373] group-hover:scale-110">
+              <svg class="w-8 h-8 text-[#D4A373] transition group-hover:text-white"
+                   fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M3 5a2 2 0 012-2h2l2 5-2 1a11 11 0 005 5l1-2 5 2v2a2 2 0 01-2 2h-1C8 20 4 16 4 9V8a2 2 0 01-1-3z"/>
+              </svg>
             </div>
+
+            <p class="text-[#1E3A5F] font-medium text-xl mb-2">Teléfono</p>
+
+            <p class="text-gray-500 text-lg">
+              449 347 6829
+            </p>
+
+          </div>
+
+          <!-- REDES -->
+          <div class="group p-6 rounded-2xl border border-[#E5E7EB] bg-white/70 backdrop-blur-sm 
+                      transition hover:shadow-lg hover:-translate-y-1 text-center">
+
+            <div class="w-16 h-16 mx-auto mb-4 border-2 border-[#D4A373] rounded-full flex items-center justify-center
+                        transition-all duration-300 group-hover:bg-[#D4A373] group-hover:scale-110">
+              <svg class="w-8 h-8 text-[#D4A373] transition group-hover:text-white"
+                   fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 01-12 0 6 6 0 0112 0z"/>
+                <path d="M2 20c2-4 14-4 16 0"/>
+              </svg>
+            </div>
+
+            <p class="text-[#1E3A5F] font-medium text-xl mb-2">Redes Sociales</p>
+
+            <p class="text-gray-500 text-lg">
+              @myspace_ags
+            </p>
+
           </div>
 
         </div>
       </div>
 
+      <!-- FORM -->
       <div class="bg-white/80 backdrop-blur-md p-14 rounded-3xl border border-[#E5E7EB] shadow-sm">
-        <h2 class="font-serif text-4xl text-[#1E3A5F] mb-12">
+        <h2 class="font-serif text-4xl text-[#1E3A5F] mb-12 text-center">
           Envíanos un mensaje
         </h2>
 
@@ -116,7 +149,7 @@
   </div>
 </section>
 
-<section class="bg-white pt-12 pb-24 px-6 -mt-6">
+<section class="bg-white py-12 px-6">
   <div class="max-w-4xl mx-auto text-center">
 
     <h2 class="font-serif text-4xl text-[#1E3A5F] mb-6 tracking-wide">
@@ -125,14 +158,17 @@
 
     <div class="w-20 h-[3px] bg-[#D4A373] mx-auto mb-12"></div>
 
-    <div class="flex justify-center gap-4 mb-10">
+    <div class="flex justify-center gap-5 mb-6">
       <svg *ngFor="let i of [1,2,3,4,5]"
-           (click)="calificar(i)"
-           xmlns="http://www.w3.org/2000/svg"
-           class="w-12 h-12 cursor-pointer transition transform hover:scale-110"
-           [ngClass]="i <= calificacionSeleccionada ? 'text-[#D4A373]' : 'text-gray-300'"
-           fill="currentColor"
-           viewBox="0 0 20 20">
+          (click)="calificar(i)"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-14 h-14 cursor-pointer transition-all duration-300 ease-out 
+                  hover:scale-125 hover:drop-shadow-[0_0_12px_rgba(212,163,115,0.9)]"
+          [ngClass]="i <= calificacionSeleccionada 
+                      ? 'text-[#D4A373] scale-110 drop-shadow-[0_0_8px_rgba(212,163,115,0.7)]' 
+                      : 'text-gray-300 hover:text-[#D4A373]'"
+          fill="currentColor"
+          viewBox="0 0 20 20">
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.955c.3.921-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.175 0l-3.37 2.448c-.784.57-1.838-.197-1.539-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.98 9.382c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.955z"/>
       </svg>
     </div>
@@ -143,3 +179,43 @@
 
   </div>
 </section>
+
+<div *ngIf="mostrarMapa" 
+     class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50">
+
+  <div class="bg-white rounded-3xl overflow-hidden w-[92%] max-w-4xl shadow-2xl relative animate-fadeIn">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center px-8 py-5 border-b border-gray-200">
+      <h3 class="font-serif text-2xl text-[#1E3A5F] tracking-wide">
+        Nuestra ubicación
+      </h3>
+
+      <button (click)="mostrarMapa = false"
+              class="text-[#1E3A5F] text-2xl hover:scale-110 transition">
+        ✕
+      </button>
+    </div>
+
+    <!-- MAPA -->
+    <div class="p-6">
+      <div class="rounded-2xl overflow-hidden border border-gray-200 shadow-md">
+        <iframe
+          src="https://www.google.com/maps?q=Av.+Independencia+225A,+Aguascalientes&output=embed"
+          class="w-full h-[450px] border-0">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="px-8 pb-6">
+      <button
+        onclick="window.open('https://www.google.com/maps?q=Av.+Independencia+225A,+Aguascalientes','_blank')"
+        class="w-full border border-[#D4A373] text-[#1E3A5F] py-3 tracking-widest text-sm 
+               hover:bg-[#D4A373] hover:text-white transition rounded-xl">
+        ABRIR EN GOOGLE MAPS
+      </button>
+    </div>
+
+  </div>
+</div>

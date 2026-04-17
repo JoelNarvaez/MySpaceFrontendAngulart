@@ -50,4 +50,7 @@ get promedio(): number {
   const total = this.calificaciones.reduce((a, b) => a + b, 0);
   return this.calificaciones.length ? total / this.calificaciones.length : 0;
 }
+
+mostrarMapa = false;
 }
+
