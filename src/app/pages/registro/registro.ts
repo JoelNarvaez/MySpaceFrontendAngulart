@@ -63,7 +63,7 @@ export class Registro {
             popup: 'rounded-3xl border-none shadow-2xl',
             title: 'uppercase'
           }
-        }).then(() => this.router.navigate(['/agendar']));
+        }).then(() => this.router.navigate(['/']));
       },
       error: (err) => {
         this.cargando = false;

@@ -1,16 +1,15 @@
 @reference "tailwindcss";
 
-/* DEFINIR COMO UTILITY PARA QUE @APPLY FUNCIONE */
 @utility logo-font {
-  font-family: 'Lora', serif;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
 }
 
 :host {
   display: block;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
-/* Ahora sí puedes usar @apply logo-font aquí */
 .section-title {
   @apply logo-font text-[#1E3A5F] uppercase tracking-[0.2em] text-2xl mb-8 flex items-center gap-3;
 }
@@ -20,19 +19,15 @@
   @apply h-[1px] w-20 bg-[#D4A373]/50 inline-block;
 }
 
-/* ... el resto de tus estilos ... */
-/* Ajustes para el contenedor de Horarios */
 .horarios-card {
   @apply bg-[#1E3A5F] text-white p-10 rounded-2xl shadow-2xl relative overflow-hidden;
 }
 
-/* Detalle decorativo dorado para los horarios */
 .gold-dot {
   @apply w-1.5 h-1.5 bg-[#D4A373] rounded-full;
 }
 
-/* Botón de ver más servicios (link inferior) */
 .link-more {
-  @apply text-[#1E3A5F] font-bold text-xs uppercase tracking-widest flex items-center gap-2 
+  @apply text-[#1E3A5F] font-bold text-xs uppercase tracking-widest flex items-center gap-2
          hover:text-[#D4A373] transition-colors duration-300;
 }

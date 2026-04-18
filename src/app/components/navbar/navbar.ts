@@ -42,4 +42,18 @@ export class Navbar {
       });
     }
   }
+
+  cerrarSesion() {
+    this.isMobileMenuOpen = false;
+    this.authService.logout();
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Sesión finalizada',
+      text: 'Tu sesión se cerró correctamente.',
+      confirmButtonColor: '#1E3A5F'
+    }).then(() => {
+      this.router.navigate(['/']);
+    });
+  }
 }

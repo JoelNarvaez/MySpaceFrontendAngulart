@@ -1,13 +1,16 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef, inject, signal } from '@angular/core';
-import { RouterLink, Router } from '@angular/router'; // Añadimos Router
+import { RouterLink, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Servicios } from '../../services/servicios'; 
+import { Servicios } from '../../services/servicios';
 import { TarjetaServicio } from '../../components/tarjeta-servicio/tarjeta-servicio';
 import { Servicio } from '../../interfaces/servicio';
+import { Beneficios } from '../../components/beneficios/beneficios';
+import { SobreNosotros } from '../../components/sobre-nosotros/sobre-nosotros';
+import { Testimonios } from '../../components/testimonios/testimonios';
 
 @Component({
   selector: 'app-inicio',
-  imports: [RouterLink, CommonModule, TarjetaServicio], 
+  imports: [RouterLink, CommonModule, TarjetaServicio, Beneficios, SobreNosotros, Testimonios],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css',
 })

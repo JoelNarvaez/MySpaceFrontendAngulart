@@ -19,4 +19,18 @@ export class TarjetaServicio {
   onVerDetalle() {
     this.verDetalle.emit(this.servicio.id);
   }
+
+  imagenes: Record<number, string> = {
+  1: 'aromaterapia2.jpg',
+  2: 'masajeRelajante.jpg',
+  3: 'masajeDescontructurante.jpg',
+  4: 'piedras.jpg',
+  5: 'pinda.jpg',
+  6: 'drenaje.jpeg',
+  7: 'tratamiento.jpg'
+};
+
+  getImagen(): string {
+    return this.imagenes[this.servicio.id] || 'images/default.jpg';
+  }
 }

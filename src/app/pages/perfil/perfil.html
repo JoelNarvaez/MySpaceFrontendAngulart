@@ -1,0 +1,98 @@
+<section class="profile-shell min-h-screen px-4 py-16">
+  <div class="mx-auto max-w-3xl">
+    <div class="mb-10 text-center">
+      <p class="text-[11px] font-medium uppercase tracking-[0.24em] text-[#938AA8]">Mi Perfil</p>
+      <h1 class="logo-font mt-3 text-4xl uppercase tracking-[0.12em] text-[#1E3A5F] md:text-5xl">
+        Actualiza tus datos<span class="text-[#D4A373]">.</span>
+      </h1>
+      <p class="mx-auto mt-4 max-w-xl text-sm leading-6 text-[#6B7280]">
+        Modifica tu información personal para mantener tus reservas y contacto al día.
+      </p>
+    </div>
+
+    <div class="profile-card border border-white/90 bg-white p-7 md:p-8">
+      <div class="mb-6 flex items-center justify-between gap-4">
+        <div>
+          <p class="text-[11px] font-medium uppercase tracking-[0.14em] text-[#A3A3A3]">Datos del usuario</p>
+          <h2 class="mt-2 text-2xl font-semibold text-[#111827]">Información de perfil</h2>
+        </div>
+
+        <a routerLink="/agendar" class="profile-back">Volver a agendar</a>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="guardar()">
+        <div class="space-y-5">
+          <div>
+            <label class="mb-2 block pl-12 text-[10px] font-bold uppercase tracking-[0.16em] text-[#18181B]">
+              Nombre Completo
+            </label>
+            <div class="profile-field">
+              <span class="profile-field__icon">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </span>
+              <input type="text" formControlName="nombre" class="profile-field__input" placeholder="Tu nombre completo" />
+            </div>
+          </div>
+
+          <div>
+            <label class="mb-2 block pl-12 text-[10px] font-bold uppercase tracking-[0.16em] text-[#18181B]">
+              Correo Electrónico
+            </label>
+            <div class="profile-field">
+              <span class="profile-field__icon">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                </svg>
+              </span>
+              <input type="email" formControlName="email" class="profile-field__input" placeholder="ejemplo@correo.com" />
+            </div>
+            @if (email?.invalid && (email?.dirty || email?.touched)) {
+              <p class="mt-1 pl-12 text-xs text-[#D14343]">Ingresa un correo válido.</p>
+            }
+          </div>
+
+          <div>
+            <label class="mb-2 block pl-12 text-[10px] font-bold uppercase tracking-[0.16em] text-[#18181B]">
+              Teléfono
+            </label>
+            <div class="profile-field">
+              <span class="profile-field__icon">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 6.338c0 9.194 7.447 16.641 16.641 16.641.903 0 1.788-.073 2.652-.213a.75.75 0 00.584-.812 18.78 18.78 0 00-1.518-5.472.75.75 0 00-.857-.399l-3.082.694a15.053 15.053 0 01-7.365-7.365l.694-3.082a.75.75 0 00-.399-.857 18.78 18.78 0 00-5.472-1.518.75.75 0 00-.812.584 17.71 17.71 0 00-.213 2.652z" />
+                </svg>
+              </span>
+              <input
+                type="tel"
+                formControlName="telefono"
+                inputmode="numeric"
+                (input)="onTelefonoInput($event)"
+                class="profile-field__input"
+                placeholder="465 119 0545" />
+            </div>
+            @if (telefono?.invalid && (telefono?.dirty || telefono?.touched)) {
+              <p class="mt-1 pl-12 text-xs text-[#D14343]">Ingresa un teléfono de 10 dígitos.</p>
+            }
+          </div>
+        </div>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-end">
+          <a routerLink="/agendar" class="profile-secondary">Cancelar</a>
+          <button type="submit" [disabled]="guardando" class="profile-primary">
+            {{ guardando ? 'Guardando...' : 'Guardar cambios' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
