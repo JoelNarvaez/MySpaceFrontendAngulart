@@ -13,7 +13,8 @@ export class Citas {
   private apiUrl = environment.apiUrl;
 
   getHorariosDisponibles(fecha: string, idServicio: number): Observable<Horario[]> {
-    return this.http.get<Horario[]>(`${this.apiUrl}/horarios?fecha=${fecha}&idServicio=${idServicio}`);
+    const cacheBuster = Date.now();
+    return this.http.get<Horario[]>(`${this.apiUrl}/horarios?fecha=${fecha}&idServicio=${idServicio}&_ts=${cacheBuster}`);
   }
 
   crearCita(cita: Omit<Cita, 'id' | 'fecha_creacion'>): Observable<any> {

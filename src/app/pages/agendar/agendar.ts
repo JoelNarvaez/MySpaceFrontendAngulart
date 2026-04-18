@@ -427,15 +427,23 @@ export class Agendar implements OnInit {
             return;
           }
 
-          const mensaje =
-            err.status === 409
-              ? 'Ese horario ya fue reservado, elige otro.'
-              : 'No se pudo agendar la cita, intenta de nuevo.';
+          if (err.status === 409) {
+            this.form.patchValue({ hora: '' });
+            this.cargarHorarios();
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Horario no disponible',
+              text: 'Ese horario ya no esta libre. Actualizamos los horarios para que elijas otro.',
+              confirmButtonColor: '#1E3A5F'
+            });
+            return;
+          }
 
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: mensaje,
+            text: 'No se pudo agendar la cita, intenta de nuevo.',
             confirmButtonColor: '#1E3A5F'
           });
         }
@@ -448,11 +456,24 @@ export class Agendar implements OnInit {
     if (!fecha || !idServicio) return;
 
     this.cargandoHorarios = true;
-    this.citasService.getHorariosDisponibles(fecha, Number(idServicio)).subscribe((respuesta: any) => {
-      this.horarios = respuesta.data || [];
-      this.resetVisibilidadHorarios();
-      this.cargandoHorarios = false;
-      this.cd.detectChanges();
+    this.citasService.getHorariosDisponibles(fecha, Number(idServicio)).subscribe({
+      next: (respuesta: any) => {
+        this.horarios = respuesta.data || [];
+
+        const horaSeleccionada = this.form.value.hora;
+        if (horaSeleccionada && !this.horarios.some((horario) => horario.hora === horaSeleccionada && horario.disponible)) {
+          this.form.patchValue({ hora: '' }, { emitEvent: false });
+        }
+
+        this.resetVisibilidadHorarios();
+        this.cargandoHorarios = false;
+        this.cd.detectChanges();
+      },
+      error: () => {
+        this.horarios = [];
+        this.cargandoHorarios = false;
+        this.cd.detectChanges();
+      }
     });
   }
 

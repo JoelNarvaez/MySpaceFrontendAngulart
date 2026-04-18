@@ -1,71 +1,134 @@
-<section class="min-h-screen bg-[#F5F5F4] py-16 px-8">
-  <div class="max-w-4xl mx-auto">
-
+<section class="service-detail-shell min-h-screen px-5 py-14 md:px-8 md:py-16">
+  <div class="mx-auto max-w-6xl">
     @if (!servicio()) {
-      <div class="flex justify-center py-20">
-        <div class="animate-pulse text-[#1E3A5F] logo-font text-xl uppercase tracking-widest">Preparando tu experiencia...</div>
+      <div class="service-loading flex min-h-[24rem] items-center justify-center">
+        <div class="text-center">
+          <div class="mx-auto h-12 w-12 animate-spin rounded-full border-b-2 border-[#D4A373]"></div>
+          <p class="logo-font mt-5 text-lg uppercase tracking-[0.18em] text-[#1E3A5F]">Preparando tu experiencia</p>
+        </div>
       </div>
     } @else {
-
-      <button (click)="router.navigate(['/servicios'])"
-        class="group text-[#1E3A5F] hover:text-[#D4A373] mb-10 flex items-center gap-2 transition-all font-bold text-xs uppercase tracking-widest">
-        <span class="group-hover:-translate-x-1 transition-transform">←</span> 
-        Regresar a servicios
+      <button
+        (click)="router.navigate(['/servicios'])"
+        class="back-link mb-8 inline-flex items-center gap-3"
+      >
+        <span class="back-link__icon">←</span>
+        <span>Regresar a servicios</span>
       </button>
 
-      <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-        
-        <div class="h-80 bg-[#1E3A5F] relative flex items-center justify-center overflow-hidden">
-          <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-          <span class="text-white/20 text-[12rem] logo-font select-none">MS</span>
-          <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white to-transparent"></div>
-        </div>
+      <div class="service-detail-grid">
+        <article class="service-hero-card">
+          <div
+            class="service-hero-media"
+            [style.background-image]="obtenerImagenFondo()"
+            [class.service-hero-media--fallback]="!servicio()?.imagen_url"
+          >
+            <div class="service-hero-media__overlay"></div>
 
-        <div class="p-10 md:p-16 -mt-12 relative bg-white rounded-t-[3rem]">
-          <div class="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-8">
+            <div class="service-hero-badges">
+              <span class="service-chip service-chip--light">{{ obtenerEtiquetaDuracion() }}</span>
+              <span class="service-chip service-chip--light">{{ servicio()?.duracion_min }} min</span>
+            </div>
+
+            <div class="service-hero-copy">
+              <p class="service-eyebrow">Experiencia destacada</p>
+              <h1 class="logo-font service-title">{{ servicio()?.nombre }}</h1>
+              <p class="service-summary">{{ resumen() }}</p>
+            </div>
+          </div>
+
+          <div class="service-indicator-grid">
+            @for (indicador of obtenerIndicadores(); track indicador.etiqueta) {
+              <div class="service-indicator">
+                <span class="service-indicator__label">{{ indicador.etiqueta }}</span>
+                <strong class="service-indicator__value">{{ indicador.valor }}</strong>
+              </div>
+            }
+          </div>
+        </article>
+
+        <article class="service-info-card">
+          <div class="service-price-row">
             <div>
-              <h1 class="logo-font text-4xl md:text-5xl text-[#1E3A5F] mb-2">{{ servicio()?.nombre }}</h1>
-              <div class="h-1 w-20 bg-[#D4A373]"></div>
+              <p class="service-section-label">Inversión</p>
+              <p class="service-price">{{ servicio()?.precio | precioMxn }}</p>
             </div>
-            
-            <div class="flex flex-col items-end">
-              <span class="text-[#D4A373] text-[10px] font-bold uppercase tracking-[0.3em]">Inversión</span>
-              <p class="text-[#1E3A5F] text-4xl font-black">{{ servicio()?.precio | precioMxn }}</p>
+
+            <button (click)="irAgendar()" class="primary-cta primary-cta--desktop">
+              Reservar ahora
+            </button>
+          </div>
+
+          <div class="service-panel-tabs">
+            <button
+              type="button"
+              class="service-panel-tab"
+              [ngClass]="{ 'service-panel-tab--active': panelActivo() === 'incluye' }"
+              (click)="seleccionarPanel('incluye')"
+            >
+              Incluye
+            </button>
+
+            <button
+              type="button"
+              class="service-panel-tab"
+              [ngClass]="{ 'service-panel-tab--active': panelActivo() === 'visita' }"
+              (click)="seleccionarPanel('visita')"
+            >
+              Tu visita
+            </button>
+
+            <button
+              type="button"
+              class="service-panel-tab"
+              [ngClass]="{ 'service-panel-tab--active': panelActivo() === 'ideal' }"
+              (click)="seleccionarPanel('ideal')"
+            >
+              Ideal para ti
+            </button>
+          </div>
+
+          <div class="service-panel-card">
+            <p class="service-section-label">{{ detalleActivo().titulo }}</p>
+            <p class="service-panel-text">{{ detalleActivo().descripcion }}</p>
+
+            <div class="service-point-list">
+              @for (punto of detalleActivo().puntos; track punto) {
+                <div class="service-point">
+                  <span class="service-point__dot"></span>
+                  <p>{{ punto }}</p>
+                </div>
+              }
             </div>
           </div>
 
-          <p class="text-gray-600 mb-10 text-lg leading-relaxed font-light">
-            {{ servicio()?.descripcion }}
-          </p>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <div class="flex items-center gap-4 p-6 bg-[#F5F5F4] rounded-2xl border border-gray-100">
-              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-[#D4A373]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              </div>
-              <div>
-                <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Duración estimada</p>
-                <p class="text-[#1E3A5F] font-bold text-xl">{{ servicio()?.duracion_min }} minutos</p>
-              </div>
+          <div class="service-timeline">
+            <div class="service-timeline__header">
+              <p class="service-section-label">Cómo se vive</p>
+              <p class="service-timeline__hint">Una ruta simple para entender el ritmo de la experiencia</p>
             </div>
 
-            <div class="flex items-center gap-4 p-6 bg-[#F5F5F4] rounded-2xl border border-gray-100">
-              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm text-[#D4A373]">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-              </div>
-              <div>
-                <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Incluye</p>
-                <p class="text-[#1E3A5F] font-bold text-xl">Atención Premium</p>
-              </div>
+            <div class="service-timeline__grid">
+              @for (momento of obtenerMomentos(); track momento.titulo) {
+                <article class="timeline-step">
+                  <span class="timeline-step__time">{{ momento.tiempo }}</span>
+                  <h3 class="timeline-step__title">{{ momento.titulo }}</h3>
+                  <p class="timeline-step__text">{{ momento.detalle }}</p>
+                </article>
+              }
             </div>
           </div>
 
-          <button (click)="irAgendar()"
-            class="w-full bg-[#1E3A5F] hover:bg-[#D4A373] text-white py-5 rounded-full text-sm font-bold uppercase tracking-[0.2em] transition-all duration-500 shadow-xl hover:-translate-y-1 active:scale-95">
-            Reservar Experiencia Ahora
-          </button>
-        </div>
+          <div class="service-action-bar">
+            <button (click)="irAgendar()" class="primary-cta w-full">
+              Reservar experiencia
+            </button>
 
+            <button (click)="router.navigate(['/servicios'])" class="secondary-cta w-full">
+              Ver más servicios
+            </button>
+          </div>
+        </article>
       </div>
     }
   </div>
