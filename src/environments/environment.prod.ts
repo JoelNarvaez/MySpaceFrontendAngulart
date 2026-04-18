@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://tu-backend.com/api'
+  apiUrl: 'https://myspacebackendnodejs-production.up.railway.app/api'
 };
