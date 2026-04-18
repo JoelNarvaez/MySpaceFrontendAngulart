@@ -10,7 +10,7 @@
     } @else {
       <button
         (click)="router.navigate(['/servicios'])"
-        class="back-link mb-8 inline-flex items-center gap-3"
+        class="back-link mb-8 inline-flex items-center gap-3 cursor-pointer"
       >
         <span class="back-link__icon">←</span>
         <span>Regresar a servicios</span>
@@ -54,7 +54,7 @@
               <p class="service-price">{{ servicio()?.precio | precioMxn }}</p>
             </div>
 
-            <button (click)="irAgendar()" class="primary-cta primary-cta--desktop">
+            <button (click)="irAgendar()" class="primary-cta primary-cta--desktop cursor-pointer">
               Reservar ahora
             </button>
           </div>
@@ -62,7 +62,7 @@
           <div class="service-panel-tabs">
             <button
               type="button"
-              class="service-panel-tab"
+              class="service-panel-tab cursor-pointer"
               [ngClass]="{ 'service-panel-tab--active': panelActivo() === 'incluye' }"
               (click)="seleccionarPanel('incluye')"
             >
@@ -71,7 +71,7 @@
 
             <button
               type="button"
-              class="service-panel-tab"
+              class="service-panel-tab cursor-pointer"
               [ngClass]="{ 'service-panel-tab--active': panelActivo() === 'visita' }"
               (click)="seleccionarPanel('visita')"
             >
@@ -80,7 +80,7 @@
 
             <button
               type="button"
-              class="service-panel-tab"
+              class="service-panel-tab cursor-pointer"
               [ngClass]="{ 'service-panel-tab--active': panelActivo() === 'ideal' }"
               (click)="seleccionarPanel('ideal')"
             >
@@ -120,11 +120,11 @@
           </div>
 
           <div class="service-action-bar">
-            <button (click)="irAgendar()" class="primary-cta w-full">
+            <button (click)="irAgendar()" class="primary-cta w-full cursor-pointer">
               Reservar experiencia
             </button>
 
-            <button (click)="router.navigate(['/servicios'])" class="secondary-cta w-full">
+            <button (click)="router.navigate(['/servicios'])" class="secondary-cta w-full cursor-pointer">
               Ver más servicios
             </button>
           </div>

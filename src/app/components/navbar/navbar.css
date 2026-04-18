@@ -64,7 +64,7 @@
 }
 
 .btn-gold {
-  @apply rounded-full bg-[#D4A373] px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white shadow-sm transition-all active:scale-95 hover:-translate-y-0.5 hover:bg-[#bc8b5a] hover:shadow-md;
+  @apply rounded-full bg-[#D4A373] cursor-pointer px-6 py-2.5 text-[11px] font-bold uppercase tracking-[0.1em] text-white shadow-sm transition-all active:scale-95 hover:-translate-y-0.5 hover:bg-[#bc8b5a] hover:shadow-md;
 }
 
 .btn-login {

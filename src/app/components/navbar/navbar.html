@@ -29,11 +29,11 @@
       <div class="navbar-actions">
         @if (authService.estaAutenticado()) {
           @if (!authService.esAdmin()) {
-            <button (click)="irAgendar()" class="btn-gold">Agendar Cita</button>
+            <button (click)="irAgendar()" class="btn-gold cursor-pointer">Agendar Cita</button>
           }
 
           <a routerLink="/perfil" class="user-chip user-chip--profile">{{ authService.usuario()?.nombre || 'User' }}</a>
-          <button (click)="cerrarSesion()" class="user-chip user-chip--logout">Salir</button>
+          <button (click)="cerrarSesion()" class="user-chip user-chip--logout cursor-pointer">Salir</button>
         } @else {
           <a routerLink="/login" class="btn-login">Ingresar</a>
           <button (click)="irAgendar()" class="btn-gold">Agendar</button>
